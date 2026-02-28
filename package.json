@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/JPMarsi/cansat-ground-station/issues"
   },
-  "homepage": "https://github.com/JPMarsi/cansat-ground-station#readme"
+  "homepage": "https://github.com/JPMarsi/cansat-ground-station#readme",
+  "dependencies": {
+    "@serialport/parser-readline": "^13.0.0",
+    "node-red-node-serialport": "^2.0.3",
+    "serialport": "^13.0.0"
+  }
 }
