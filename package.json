@@ -1,0 +1,24 @@
+{
+  "name": "cansat-ground-station-unsl",
+  "version": "1.0.0",
+  "description": "ground station app for unsl's cansat",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JPMarsi/cansat-ground-station.git"
+  },
+  "keywords": [
+    "cansat",
+    "station",
+    "unsl"
+  ],
+  "author": "00glitched (Ezequiel J. Coña - Electronics and software team)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/JPMarsi/cansat-ground-station/issues"
+  },
+  "homepage": "https://github.com/JPMarsi/cansat-ground-station#readme"
+}
