@@ -12,6 +12,7 @@
     - [ ] - Save CSV
     - [ ] - Load data (sim pressure mode)
     - [ ] - Save data (flight mode)
+    - [ ] - Save metadata
 - [ ] - Xbee abstraction (commands)
     - [ ] - Telemetry payload ON/OFF
     - [ ] - Set Time
@@ -20,10 +21,11 @@
     - [ ] - Calibrate altitude to zero
     - [ ] - Mechanic actuator
     - [ ] - Optionals
-        - [ ] - Confirm data in
-        - [ ] - Send data
-        - [ ] - Confirm data out
-        - [ ] - Test sensor
+        - [ ] - Confirm data in **
+        - [ ] - Send data **
+        - [ ] - Confirm data out **
+        - [ ] - Test sensor noise
+        - [ ] - Get individual data
         - [ ] - Test ping
 
 ## How to Install
