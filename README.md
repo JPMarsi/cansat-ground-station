@@ -1,2 +1,29 @@
 # cansat-ground-station
 “Ground Station app for CanSat 2027"
+
+## ToDo list
+- [ ] - Frontend (with associated funcs)
+    - [ ] - Buttons
+    - [ ] - Graphs
+    - [ ] - Data
+    - [ ] - Terminal
+    - [ ] - Command line
+- [ ] - Backend
+    - [ ] - Save CSV
+    - [ ] - Load data (sim pressure mode)
+    - [ ] - Save data (flight mode)
+- [ ] - Xbee abstraction (commands)
+    - [ ] - Telemetry payload ON/OFF
+    - [ ] - Set Time
+    - [ ] - Simulation mode
+    - [ ] - Simulation pressure
+    - [ ] - Calibrate altitude to zero
+    - [ ] - Mechanic actuator
+    - [ ] - Optionals
+        - [ ] - Confirm data in
+        - [ ] - Send data
+        - [ ] - Confirm data out
+        - [ ] - Test sensor
+        - [ ] - Test ping
+
+## How to Install
