@@ -1,0 +1,118 @@
+
+<!-- app es el marco principal -->
+<div id="app">
+  <link rel="stylesheet" href="style.css" />
+  <!-- Layout -->
+  <main id="layout">
+    <!-- Lado izquierdo -->
+    <aside id="sidebar">
+
+      <!-- Logo / Badge -->
+      <section id="brand">
+        <img id="logo" src="logo.jpeg" alt="UNSL logo" />
+      </section>
+
+      <!-- Status / Live values -->
+      <section id="status">
+        <h2 id="status-title">Dashboard</h2>
+
+        <div class="dataLine"><span class="words">Team UNSL: </span> <span class="lines" id="team">3165</span></div>
+        <div class="dataLine"><span class="words">Mission Time: </span> <span class="lines" id="missionTime">00:45:24</span></div>
+        <div class="dataLine"><span class="words">Packet Count: </span> <span class="lines" id="packetCount">724</span></div>
+        <div class="dataLine"><span class="words">Mode: </span> <span class="lines" id="mode">SIMULATION</span></div>
+        <div class="dataLine"><span class="words">State: </span> <span class="lines" id="state">DESCENT</span></div>
+
+        <div class="dataLine"><span class="words">Altitude: </span> <span class="lines" id="altitude">0</span></div>
+        <div class="dataLine"><span class="words">Temperature: </span> <span class="lines" id="temperature">-1.51</span></div>
+        <div class="dataLine"><span class="words">Pressure: </span> <span class="lines" id="pressure">0</span></div>
+        <div class="dataLine"><span class="words">Voltage: </span> <span class="lines" id="voltage">3.97</span></div>
+
+        <div class="dataLine"><span class="words">Gyro r: </span> <span class="lines" id="gyroR">-0.26</span></div>
+        <div class="dataLine"><span class="words">Gyro p: </span> <span class="lines" id="gyroP">-0.73</span></div>
+        <div class="dataLine"><span class="words">Gyro y: </span> <span class="lines" id="gyroY">0.87</span></div>
+
+        <div class="dataLine"><span class="words">Accel r: </span> <span class="lines" id="accelR">1.07</span></div>
+        <div class="dataLine"><span class="words">Accel p: </span> <span class="lines" id="accelP">0.92</span></div>
+        <div class="dataLine"><span class="words">Accel y: </span> <span class="lines" id="accelY">-0.48</span></div>
+
+        <div class="dataLine"><span class="words">Mag x: </span> <span class="lines" id="magX">5.43</span></div>
+        <div class="dataLine"><span class="words">Mag y: </span> <span class="lines" id="magY">-49.62</span></div>
+        <div class="dataLine"><span class="words">Mag z: </span> <span class="lines" id="magZ">21.71</span></div>
+
+        <div class="dataLine"><span class="words">Autogyro descent rate: </span> <span class="lines" id="autogyroDescentRate">4.05</span></div>
+
+        <div class="dataLine"><span class="words">GPS Time: </span> <span class="lines" id="gpsTime">00:25:56</span></div>
+        <div class="dataLine"><span class="words">GPS Altitude: </span> <span class="lines" id="gpsAltitude">1632.41</span></div>
+        <div class="dataLine"><span class="words">GPS Latitude: </span> <span class="lines" id="gpsLatitude">-85.36</span></div>
+        <div class="dataLine"><span class="words">GPS Longitude: </span> <span class="lines" id="gpsLongitude">79.66</span></div>
+        <div class="dataLine"><span class="words">GPS Sats: </span> <span class="lines" id="gpsSats">4</span></div>
+
+        <div class="dataLine"><span class="words">Cmd Echo: </span> <span class="lines" id="cmdEcho">CAL_ALTITUDE</span></div>
+      </section>
+    </aside>
+
+    <!-- Lado derecho -->
+    <section id="content">
+
+      <!-- Commands block -->
+      <section id="commands">
+        <h2>Commands</h2>
+
+        <div id="commandsButtons">
+          <button id="btnSetTime" type="button">SET TIME</button>
+          <button id="btnStartTelemetry" type="button">START TELEMETRY</button>
+          <button id="btnEndTelemetry" type="button">END TELEMETRY</button>
+          <button id="btnCalAltitude" type="button">CAL ALTITUDE</button>
+          <button id="btnCalPyr" type="button">CAL PYR</button>
+
+          <button id="btnEnableSim" type="button">ENABLE SIM</button>
+          <button id="btnActivateSim" type="button">ACTIVATE SIM</button>
+          <button id="btnDeactivateSim" type="button">DEACTIVATE SIM</button>
+        </div>
+      </section>
+
+      <!-- Custom command -->
+      <section id="customCommand">
+        <h3>Send Custom Command</h3>
+
+        <div id="customCommandRow">
+          <input id="customCommandInput" type="text" placeholder="Type command..." />
+          <button id="btnSendCustom" type="button">SEND</button>
+        </div>
+      </section>
+
+      <!-- Telemetry charts -->
+      <section id="telemetry">
+        <h2>Telemetry</h2>
+
+        <div id="telemetryGrid">
+          <article class="chartCard" id="chart-1">
+            <h4 class="chartTitle">Chart 1</h4>
+            <canvas id="telemetryChart1"></canvas>
+          </article>
+
+          <article class="chartCard" id="chart-2">
+            <h4 class="chartTitle">Chart 2</h4>
+            <canvas id="telemetryChart2"></canvas>
+          </article>
+
+          <article class="chartCard" id="chart-3">
+            <h4 class="chartTitle">Chart 3</h4>
+            <canvas id="telemetryChart3"></canvas>
+          </article>
+
+          <article class="chartCard" id="chart-4">
+            <h4 class="chartTitle">Chart 4</h4>
+            <canvas id="telemetryChart4"></canvas>
+          </article>
+
+          <article class="chartCard" id="chart-5">
+            <h4 class="chartTitle">Chart 5</h4>
+            <canvas id="telemetryChart5"></canvas>
+          </article>
+        </div>
+      </section>
+
+    </section>
+  </main>
+</div>
