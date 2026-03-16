@@ -1,4 +1,4 @@
-import { Telemetry } from "./config.js";
+import { Telemetry } from "./V&V/config.js";
 
 /**
  * Setea texto seguro en un elemento por id.
@@ -53,7 +53,7 @@ export function updateLeftPanel(t = Telemetry) {
   setText("gpsLongitude", fmtNumber(t.GPS_LONGITUDE, 6));
   setText("gpsSats", t.GPS_SATS);
 
-  setText("cmdEcho", t.CMD_ECHO);
+  setText("cmdEcho", t. CMD_ECHO);
   setText("optionalData", t.OPTIONAL_DATA);
 }
 

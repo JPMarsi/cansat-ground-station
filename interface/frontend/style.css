@@ -1,66 +1,407 @@
-::after, /*inicializa todos los parametros en 0*/
-::before {
+/* =========================================================
+   RESET GENERAL
+   Reinicia márgenes y asegura box model consistente
+========================================================= */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-#layout{
+/* =========================================================
+   VARIABLES DE COLOR
+   Paleta sobria y técnica para contexto aeroespacial
+========================================================= */
+:root {
+  --bg-main: #07111f;          /* fondo general */
+  --bg-panel: #0d1b2a;         /* panel principal */
+  --bg-card: #13263a;          /* tarjetas y bloques */
+  --bg-card-soft: #102235;     /* variante levemente más oscura */
+  --bg-hover: #18324b;         /* hover suave */
+
+  --border-main: #23415f;      /* bordes generales */
+  --border-strong: #2f5b84;    /* bordes destacados */
+
+  --text-main: #e7eef7;        /* texto principal */
+  --text-soft: #a9bbcf;        /* texto secundario */
+  --text-dim: #7f95ac;         /* texto más apagado */
+
+  --accent-primary: #3ba4ff;   /* azul técnico */
+  --accent-secondary: #00c2a8; /* verde/cian para estado operativo */
+  --accent-warning: #f7b500;   /* advertencia */
+  --accent-danger: #ff5b6e;    /* error/parada */
+
+  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 8px 18px rgba(0, 0, 0, 0.22);
+
+  --radius-main: 14px;
+  --radius-small: 10px;
+}
+
+/* =========================================================
+   BASE DEL DOCUMENTO
+   Define fondo, tipografía y color global
+========================================================= */
+html,
+body {
+  min-height: 100%;
+  background: radial-gradient(circle at top, #0b1f35 0%, var(--bg-main) 45%, #050c16 100%);
+  color: var(--text-main);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   Da aire alrededor de toda la app
+========================================================= */
+#app {
+  min-height: 100vh;
+  padding: 18px;
+}
+
+/* =========================================================
+   LAYOUT PRINCIPAL
+   Mantiene la estructura: sidebar izquierdo + contenido derecho
+========================================================= */
+#layout {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr); 
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+/* =========================================================
+   SIDEBAR IZQUIERDO
+   Panel visual de telemetría en vivo
+========================================================= */
+#sidebar {
+  display: grid;
   gap: 14px;
+  position: sticky;
+  top: 18px;
 }
 
-#commandsButtons{
+/* =========================================================
+   BLOQUE DE MARCA / LOGO
+   Espacio reservado para badge, logo o nombre del equipo
+========================================================= */
+#brand {
+  min-height: 120px;
+  background: linear-gradient(180deg, rgba(59, 164, 255, 0.12), rgba(0, 194, 168, 0.06));
+  border: 1px solid var(--border-main);
+  border-radius: var(--radius-main);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Texto decorativo si el logo no está cargado */
+#brand::before {
+  content: "GROUND STATION";
+  color: var(--text-soft);
+  letter-spacing: 0.18em;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* Logo opcional */
+#logo {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* =========================================================
+   PANEL DE ESTADO
+   Muestra las variables de la izquierda
+========================================================= */
+#status {
+  background: linear-gradient(180deg, rgba(19, 38, 58, 0.96), rgba(13, 27, 42, 0.98));
+  border: 1px solid var(--border-main);
+  border-radius: var(--radius-main);
+  padding: 18px 16px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Título del dashboard */
+#status-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(59, 164, 255, 0.18);
+}
+
+/* =========================================================
+   FILAS DE DATOS
+   Etiqueta a la izquierda y valor a la derecha
+========================================================= */
+.dataLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Etiqueta del dato */
+.words {
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+/* Valor del dato */
+.lines {
+  color: var(--text-main);
+  font-size: 0.94rem;
+  font-weight: 700;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   CONTENIDO DERECHO
+   Grid vertical con secciones: commands, custom command, telemetry
+========================================================= */
+#content {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* equivalente a 1fr 1fr 1fr 1fr 1fr */
+  gap: 16px;
+}
+
+/* =========================================================
+   ESTILO COMÚN PARA SECCIONES DERECHAS
+   Aplica apariencia homogénea a los bloques del contenido
+========================================================= */
+#commands,
+#customCommand,
+#telemetry {
+  background: linear-gradient(180deg, rgba(16, 34, 53, 0.98), rgba(13, 27, 42, 0.98));
+  border: 1px solid var(--border-main);
+  border-radius: var(--radius-main);
+  padding: 16px;
+  box-shadow: var(--shadow-card);
+}
+
+/* Títulos principales de secciones */
+#commands h2,
+#telemetry h2,
+#customCommand h3 {
+  color: var(--text-main);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 14px;
+}
+
+/* =========================================================
+   GRILLA DE BOTONES DE COMANDOS
+   Mantiene tu estructura original de 5 columnas
+========================================================= */
+#commandsButtons {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   width: 100%;
 }
 
-#telemetryGrid{
+/* =========================================================
+   BOTONES
+   Estilo formal, técnico y consistente
+========================================================= */
+#commandsButtons button,
+#btnSendCustom {
+  border: 1px solid var(--border-strong);
+  background: linear-gradient(180deg, #16314a, #112537);
+  color: var(--text-main);
+  cursor: pointer;
+  border-radius: var(--radius-small);
+  min-height: 40px;
+  padding: 0 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: transform 0.15s ease, background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Hover de botones */
+#commandsButtons button:hover,
+#btnSendCustom:hover {
+  background: linear-gradient(180deg, #1b3d5b, #16314a);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 1px rgba(59, 164, 255, 0.15), 0 8px 18px rgba(0, 0, 0, 0.22);
+  transform: translateY(-1px);
+}
+
+/* Click de botones */
+#commandsButtons button:active,
+#btnSendCustom:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   FILA DE COMANDO PERSONALIZADO
+   Corrige el display y alinea input + botón
+========================================================= */
+#customCommandRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Input del comando personalizado */
+#customCommandInput {
+  flex: 1;
+  min-height: 42px;
+  border-radius: var(--radius-small);
+  border: 1px solid var(--border-main);
+  background: #0a1725;
+  color: var(--text-main);
+  padding: 0 12px;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* Placeholder del input */
+#customCommandInput::placeholder {
+  color: var(--text-dim);
+}
+
+/* Focus del input */
+#customCommandInput:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(59, 164, 255, 0.12);
+}
+
+/* Botón send */
+#btnSendCustom {
+  min-width: 110px;
+  min-height: 42px;
+}
+
+/* =========================================================
+   BLOQUE DE TELEMETRÍA / GRÁFICOS
+   Distribuye los chart cards
+========================================================= */
+#telemetryGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
-/*Esto es un grid solo para aplicar gap*/
-#content{
-  display: grid;
-  gap: 14px;
-}
-
-#sidebar{
-  display: grid;
-  gap: 14px;
-}
-
-#logo{
-  width: 200px;
-  height: 200px;
-  border-radius: 8px;
-}
-
-#customCommandRow{
-  display: flexbox;
+/* =========================================================
+   TARJETAS DE GRÁFICOS
+   Contenedor visual para cada canvas
+========================================================= */
+.chartCard {
+  background: linear-gradient(180deg, rgba(19, 38, 58, 0.96), rgba(11, 24, 37, 0.98));
+  border: 1px solid rgba(59, 164, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: var(--shadow-card);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
-#customCommandInput{
-  width: 90%;
-  height: 23px;
-  border-radius: 8px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-#btnSendCustom{
-  width: 9%;
-  height: 20px;
-  border-radius: 8px;
+
+/* Título de cada gráfico */
+.chartTitle {
+  color: var(--accent-secondary);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
-#commandsButtons button{
-  border: none;
-  cursor: pointer;
+/* Canvas ocupa el espacio disponible */
+.chartCard canvas {
+  width: 100%;
+  height: 100%;
+  min-height: 190px;
+  background: rgba(4, 10, 18, 0.35);
   border-radius: 8px;
-  height: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* =========================================================
+   EFECTOS VISUALES SUAVES
+   Le dan un poco más de profundidad a la app
+========================================================= */
+#status,
+#commands,
+#customCommand,
+#telemetry,
+.chartCard,
+#brand {
+  backdrop-filter: blur(4px);
+}
+
+/* =========================================================
+   AJUSTES RESPONSIVOS
+   Reacomoda layout y botones en pantallas más chicas
+========================================================= */
+@media (max-width: 1200px) {
+  #telemetryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #commandsButtons {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  #layout {
+    grid-template-columns: 1fr;
+  }
+
+  #sidebar {
+    position: static;
+  }
+
+  #telemetryGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  #app {
+    padding: 12px;
+  }
+
+  #commandsButtons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #customCommandRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #btnSendCustom {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dataLine {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .lines {
+    text-align: left;
+  }
 }

@@ -2,6 +2,7 @@
 <!-- app es el marco principal -->
 <div id="app">
   <link rel="stylesheet" href="style.css" />
+  <script src="path/to/chartjs/dist/chart.umd.min.js"></script>
   <!-- Layout -->
   <main id="layout">
     <!-- Lado izquierdo -->
@@ -9,7 +10,7 @@
 
       <!-- Logo / Badge -->
       <section id="brand">
-        <img id="logo" src="logo.jpeg" alt="UNSL logo" />
+      <!-- <img id="logo" src="logo.jpeg" alt="UNSL logo" /> -->
       </section>
 
       <!-- Status / Live values -->
@@ -25,27 +26,21 @@
         <div class="dataLine"><span class="words">Altitude: </span> <span class="lines" id="altitude">0</span></div>
         <div class="dataLine"><span class="words">Temperature: </span> <span class="lines" id="temperature">-1.51</span></div>
         <div class="dataLine"><span class="words">Pressure: </span> <span class="lines" id="pressure">0</span></div>
-        <div class="dataLine"><span class="words">Voltage: </span> <span class="lines" id="voltage">3.97</span></div>
+        <div class="dataLine"><span class="words">Voltage: </span> <span class="lines" id="voltage">0</span></div>
 
-        <div class="dataLine"><span class="words">Gyro r: </span> <span class="lines" id="gyroR">-0.26</span></div>
-        <div class="dataLine"><span class="words">Gyro p: </span> <span class="lines" id="gyroP">-0.73</span></div>
-        <div class="dataLine"><span class="words">Gyro y: </span> <span class="lines" id="gyroY">0.87</span></div>
+        <div class="dataLine"><span class="words">Gyro r: </span> <span class="lines" id="gyroR">0</span></div>
+        <div class="dataLine"><span class="words">Gyro p: </span> <span class="lines" id="gyroP">0</span></div>
+        <div class="dataLine"><span class="words">Gyro y: </span> <span class="lines" id="gyroY">0</span></div>
 
-        <div class="dataLine"><span class="words">Accel r: </span> <span class="lines" id="accelR">1.07</span></div>
-        <div class="dataLine"><span class="words">Accel p: </span> <span class="lines" id="accelP">0.92</span></div>
-        <div class="dataLine"><span class="words">Accel y: </span> <span class="lines" id="accelY">-0.48</span></div>
+        <div class="dataLine"><span class="words">Accel r: </span> <span class="lines" id="accelR">0</span></div>
+        <div class="dataLine"><span class="words">Accel p: </span> <span class="lines" id="accelP">0</span></div>
+        <div class="dataLine"><span class="words">Accel y: </span> <span class="lines" id="accelY">0</span></div>
 
-        <div class="dataLine"><span class="words">Mag x: </span> <span class="lines" id="magX">5.43</span></div>
-        <div class="dataLine"><span class="words">Mag y: </span> <span class="lines" id="magY">-49.62</span></div>
-        <div class="dataLine"><span class="words">Mag z: </span> <span class="lines" id="magZ">21.71</span></div>
-
-        <div class="dataLine"><span class="words">Autogyro descent rate: </span> <span class="lines" id="autogyroDescentRate">4.05</span></div>
-
-        <div class="dataLine"><span class="words">GPS Time: </span> <span class="lines" id="gpsTime">00:25:56</span></div>
-        <div class="dataLine"><span class="words">GPS Altitude: </span> <span class="lines" id="gpsAltitude">1632.41</span></div>
-        <div class="dataLine"><span class="words">GPS Latitude: </span> <span class="lines" id="gpsLatitude">-85.36</span></div>
-        <div class="dataLine"><span class="words">GPS Longitude: </span> <span class="lines" id="gpsLongitude">79.66</span></div>
-        <div class="dataLine"><span class="words">GPS Sats: </span> <span class="lines" id="gpsSats">4</span></div>
+        <div class="dataLine"><span class="words">GPS Time: </span> <span class="lines" id="gpsTime">00:00:00</span></div>
+        <div class="dataLine"><span class="words">GPS Altitude: </span> <span class="lines" id="gpsAltitude">0</span></div>
+        <div class="dataLine"><span class="words">GPS Latitude: </span> <span class="lines" id="gpsLatitude">0</span></div>
+        <div class="dataLine"><span class="words">GPS Longitude: </span> <span class="lines" id="gpsLongitude">0</span></div>
+        <div class="dataLine"><span class="words">GPS Sats: </span> <span class="lines" id="gpsSats">0</span></div>
 
         <div class="dataLine"><span class="words">Cmd Echo: </span> <span class="lines" id="cmdEcho">CAL_ALTITUDE</span></div>
       </section>
@@ -115,4 +110,5 @@
 
     </section>
   </main>
+  <script type="module" src="./V&V/main.js"></script><!--esto es para las pruebas. modificar segun corresponda -->
 </div>
