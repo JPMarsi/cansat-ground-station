@@ -23,6 +23,8 @@
   "homepage": "https://github.com/JPMarsi/cansat-ground-station#readme",
   "dependencies": {
     "@serialport/parser-readline": "^13.0.0",
+    "csv": "^6.4.1",
+    "csv-writer": "^1.6.0",
     "node-red-node-serialport": "^2.0.3",
     "serialport": "^13.0.0"
   }
