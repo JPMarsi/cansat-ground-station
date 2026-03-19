@@ -1,6 +1,6 @@
 //Hecho con Ia, pertenece al sistema de prueba
-import { Telemetry } from "./config.js";
-import { updateLeftPanel } from "../updatePanel.js";
+import { Telemetry } from "./configTest.js";
+import { updateLeftPanel } from "./updatePanel.js";
 
 let telemetryRows = [];
 let currentIndex = 0;

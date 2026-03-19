@@ -1,4 +1,4 @@
-import { Telemetry } from "./V&V/config.js";
+import { Telemetry } from "./configTest.js";
 
 /**
  * Setea texto seguro en un elemento por id.
