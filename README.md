@@ -9,12 +9,12 @@
     - [ ] - Terminal
     - [ ] - Command line
 - [ ] - Backend
-    - [ ] - Save CSV
+    - [x] - Save CSV
     - [ ] - Load data (sim pressure mode)
     - [ ] - Save data (flight mode)
     - [ ] - Save metadata
 - [ ] - Xbee abstraction (commands)
-    - [ ] - Telemetry payload ON/OFF
+    - [x] - Telemetry payload ON/OFF
     - [ ] - Set Time
     - [ ] - Simulation mode
     - [ ] - Simulation pressure
